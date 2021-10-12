@@ -1,0 +1,37 @@
+html {
+    overflow: hidden;
+}
+
+body{
+  background-color: rgb(240, 240, 255);;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+/* landing page style */
+#backgroundimg{
+  background-color: rgb(240, 240, 255);
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  z-index: 99;
+}
+
+.text-box {
+  position: relative;
+  margin-top: 17%;
+  color: white;
+}
+
+.formBackground{
+  background: linear-gradient(rgba(107, 107, 71, 0.9), rgba(68, 68, 34, 0.5));
+  margin-top: 5%;
+  border: 1px solid white;
+  padding: 1%;
+  margin-top: 20vh;
+  color: #f2f2f2;
+}
