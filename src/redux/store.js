@@ -8,6 +8,7 @@ import rootSaga from '../sagas/index';
 import { registerReducer } from './reducers/registerReducer';
 import { loginReducer } from './reducers/loginReducer';
 import { createProjectReducer, deleteProjectReducer, fetchProjectsReducer, getSingleProjectReducer, updateProjectReducer } from './reducers/projectReducer';
+import { getAllUsersReducer, getOneUserReducer } from './reducers/users';
 
 
 export default function configureStore() {
@@ -17,14 +18,18 @@ export default function configureStore() {
         combineReducers({
             reg: registerReducer,
             log: loginReducer,
+            users: getAllUsersReducer,
+            user: getOneUserReducer,
             create: createProjectReducer,
             projects: fetchProjectsReducer,
             update: updateProjectReducer,
             delete: deleteProjectReducer,
             oneProj: getSingleProjectReducer
        }),
-        composeWithDevTools(applyMiddleware(sagaMiddleware, thunk))
+        composeWithDevTools(applyMiddleware(sagaMiddleware, thunk, logger))
     );
+
+    console.log('single user');
     sagaMiddleware.run(rootSaga);
 
     return store;

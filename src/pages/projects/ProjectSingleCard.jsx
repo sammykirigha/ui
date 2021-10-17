@@ -1,7 +1,8 @@
 // import { Popover } from 'bootstrap';
 import React, { useState } from "react";
-// import moment from "moment";
+import moment from "moment";
 import { Link, useParams } from "react-router-dom";
+import Wrapper from "../../components/layouts/Wrapper";
 import ConfirmDelete from "./ConfirmDelete";
 
 const SingleProjectCard = ({ project, page }) => {
@@ -11,8 +12,8 @@ const SingleProjectCard = ({ project, page }) => {
   //   const id = useParams();
 
   //formate date
-  //   let date = new Date(project.start_date);
-  //   const dateString = moment(date).format("YYYY-MM-DD");
+  let date = new Date(project.start_date);
+  const dateString = moment(date).format("YYYY-MM-DD");
 
   return (
     <div className="ui card">
@@ -21,7 +22,7 @@ const SingleProjectCard = ({ project, page }) => {
           className="header"
           style={{ textTransform: "capitalize", color: "darkblue" }}
         >
-          Project: mobile dev
+          Project: {project.project_name}
         </div>
       </div>
       <div
@@ -43,11 +44,11 @@ const SingleProjectCard = ({ project, page }) => {
         >
           <span>
             {" "}
-            Start Date: <strong> 12/12/2021</strong>
+            Start Date: <strong> {dateString}</strong>
           </span>
           <span>
             {" "}
-            Duration: <strong> 2 months</strong>
+            Duration: <strong> {project.duration}</strong>
           </span>
         </div>
       </div>
@@ -61,16 +62,16 @@ const SingleProjectCard = ({ project, page }) => {
         }}
       >
         <span>
-          <strong>Team Lead:</strong> Sammy
+          <strong>Team Lead:</strong> {project.team_lead}
         </span>
         <span>
           {" "}
-          <strong>Initial Activity:</strong> Planning
+          <strong>Initial Activity:</strong> {project.initial_activity}
         </span>
       </div>
       <div className="description" style={{ padding: "10px", color: "black" }}>
         <h6>Project Description</h6>
-        <p>ghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh </p>
+        <p>{project.description} </p>
       </div>
       <div className="extra content">
         <div className="ui three buttons">

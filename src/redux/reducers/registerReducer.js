@@ -23,3 +23,4 @@ export const registerReducer = (state = { user: {} }, action) => {
             return state;
     }
 };
+

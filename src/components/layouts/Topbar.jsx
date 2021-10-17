@@ -1,17 +1,19 @@
 import { Language, NotificationsNone, Settings } from "@mui/icons-material";
 import React from "react";
+import { useSelector } from "react-redux";
 import Collapsible from "react-collapsible";
-import "./Topbar.css";
 
 const Topbar = () => {
+  const state = useSelector((state) => state.log);
   return (
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">User System</span>
+          {/* <span className="logo">User System</span> */}
           <span className="userName">
-            Welcome <stron style={{ fontWeight: "600" }}>Samuel</stron> to user
-            system
+            Welcome{" "}
+            <stron style={{ fontWeight: "600" }}>{state.user.username}</stron>{" "}
+            to user system
           </span>
         </div>
         <div className="topRight">

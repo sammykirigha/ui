@@ -5,7 +5,6 @@ import Collapsible from "react-collapsible";
 
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
@@ -50,12 +49,12 @@ const Sidebar = () => {
               <Collapsible trigger="Users">
                 <li>
                   <Link to="/newuser" className="link">
-                    Add new User
+                    Add User
                   </Link>
                 </li>
                 <li>
                   <Link to="/userlist" className="link">
-                    see all users
+                    All users
                   </Link>
                 </li>
               </Collapsible>

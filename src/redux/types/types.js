@@ -7,6 +7,16 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
+//getALlUsers
+export const LOAD_USERS = 'LOAD_USERS';
+export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS';
+export const LOAD_USERS_FAILED = 'LOAD_USERS_FAILED'
+
+//getSingleUser
+export const LOAD_ONE_USER = 'LOAD_ONE_USER';
+export const LOAD_ONE_USER_SUCCESS = 'LOAD_ONE_USER_SUCCESS';
+export const LOAD_ONE_USER_FAILED = 'LOAD_ONE_USER_FAILED'
+
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 

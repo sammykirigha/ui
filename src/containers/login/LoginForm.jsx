@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
-// import { useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { userLogging } from '../../redux/actions/login';
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { userLogging } from "../../redux/actions/login";
 import Validator from "validator";
 
 export const validate = (data) => {
@@ -22,9 +22,10 @@ const formInputstyle = {
 
 const LoginForm = () => {
   const history = useHistory();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const state = useSelector((state) => state.log);
+  const state = useSelector((state) => state.log);
+  console.log(state.user.isAdmin);
   // const [errors, setErrors] = useState({});
   // const [loading, setLoading] = useState(false);
 
@@ -39,13 +40,16 @@ const LoginForm = () => {
 
   const onLoginSubmit = (e) => {
     e.preventDefault();
-    console.log("submitting");
     history.push("/dashboard");
-    // dispatch(userLogging(user));
+    dispatch(userLogging(user));
   };
 
   // useEffect(() => {
-  //   if (state?.user?.id) history.push('/landing');
+  //   if (state?.user?.id) {
+  //     if (state?.user?.isAdmin === 1) history.push("/admin");
+  //   } else {
+  //     history.push("/dashboard");
+  //   }
   // }, [state?.user?.id]);
 
   return (
@@ -82,7 +86,7 @@ const LoginForm = () => {
             </Button>
             <p style={formInputstyle} id="signup">
               Do not have an Account?
-              <Link className="auth" to="/auth/signup">
+              <Link className="auth" to="/dashboard">
                 Signup
               </Link>
             </p>
