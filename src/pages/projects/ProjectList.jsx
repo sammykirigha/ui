@@ -1,12 +1,13 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import SearchComponent from "./SearchComponent";
 import ProjectSingleCard from "./ProjectSingleCard";
 import Wrapper from "../../components/layouts/Wrapper";
 import { getProjects } from "../../redux/actions/project";
+import { loadAllUsers } from "../../redux/actions/users";
 
 const ProjectList = () => {
   // updateSearch = event => {
@@ -18,17 +19,35 @@ const ProjectList = () => {
   const { projects, loading } = useSelector((state) => state.projects);
   const dispatch = useDispatch();
 
-  console.log("projects loaded state:", projects.length);
+  const { users } = useSelector((state) => state.users);
+
+  const getTeamLead = (id) => {
+    return users.find((user) => user.id === id);
+  };
+
+  // const p = projects.map((proj) => proj.id);
+  // console.log(getTeamLead(p));
 
   useEffect(() => {
-    if (!user?.id) history.push("/login");
+    dispatch(loadAllUsers());
+  }, []);
+
+  useEffect(() => {
+    if (!user?.id) history.push("/");
   }, [user]);
 
   useEffect(() => {
-    dispatch(getProjects());
+    dispatch(getProjects(user.id));
   }, [dispatch]);
 
-  if (loading) return <Spinner />;
+  if (loading)
+    return (
+      <Wrapper>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Wrapper>
+    );
 
   return (
     <Wrapper>
@@ -48,17 +67,13 @@ const ProjectList = () => {
             </div>
           </div>
         ) : (
-          <div
-            style={{
-              marginTop: "5px",
-              width: "100%",
-              gridGap: "20px",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            }}
-          >
+          <div className="ui three cards grey">
             {projects?.map((project, index) => (
-              <ProjectSingleCard project={project} key={project.id} />
+              <ProjectSingleCard
+                project={project}
+                key={project.id}
+                team_lead_name={getTeamLead(project.team_lead_id)}
+              />
             ))}
           </div>
         )}

@@ -40,9 +40,10 @@ export const createProjectFail = (error) => {
 };
 
 //GET ALL PROJECTS FROM DATABASE
-export const getProjects = () => {
+export const getProjects = (userId) => {
     return ({
         type: GET_PROJECTS_LOADING,
+        userId
     });
 };
 
@@ -109,7 +110,7 @@ export const deleteProjectFail = (error) => {
 export const getSingleProjectLoad = (id) => {
     return ({
         type: GET_ONE_ROJECT_LOADING,
-        id,
+        id
     });
 };
 

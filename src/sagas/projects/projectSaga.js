@@ -29,9 +29,9 @@ export function*createProjectSaga(action) {
     }
 }
 
-export function*getAllProjectsSaga(action) {
+export function* getAllProjectsSaga(action) {
     try {
-        const projects = yield call(getAllProjectsService);
+        const projects = yield call(getAllProjectsService, action.uid);
         yield put(getProjectsSuccess(projects));
     } catch (error) {
         yield put(getProjectsFail('Failed to load your projects'));
@@ -40,11 +40,9 @@ export function*getAllProjectsSaga(action) {
 
 export function* updateProjectSaga(action) {
     try {
-        console.log('updattting>>>>>>>');
         const newData = yield call(updateProjectService, action.id, action.body)
         yield put(updateProjectSuccess(newData))
         yield put(getProjects())
-        console.log('updated<<<<>>>>');
     } catch (error) {
         yield put(updateProjectFail('Failed to update'))
     }
@@ -65,6 +63,7 @@ export function* deleteProjectSaga(action) {
 export function* getSingleProjectSaga(action) {
     try {
         const oneProject = yield call(getSingleProjectService, action.id)
+        console.log({oneProject});
         yield put(getSingleProjectSuccess(oneProject))
     } catch (error) {
         yield put(getSingleProjectFail('Fail to load project...'))

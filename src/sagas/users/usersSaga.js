@@ -18,9 +18,8 @@ export function*getUsersSaga(action) {
 
 export function*getOneUserSaga(action) {
     try {
-        const user = yield call(getUserService, action.id);
-        console.log('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
-        console.log('<<<<<<<>>>>>>',{user});
+        const user = yield call(getUserService, action.userId);
+        console.log({user});
         yield put(getOneUserSuccess(user));
     } catch (error) {
         yield put(getOneUserFailed('Failed to load the user'));

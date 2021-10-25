@@ -16,6 +16,7 @@ import ProjectList from './pages/projects/ProjectList';
 import NewTask from './pages/tasks/NewTask';
 import Dashboard from './containers/home/Dashboard';
 import LoginContainer from './containers/login/LoginContainer';
+import Project from './pages/projects/Project';
 // import Admin from './components/isAdmin/Admin';
 
 
@@ -32,7 +33,8 @@ function App() {
           <Route path='/userlist' exact component={UserList} />
           <Route path='/newproject' exact component={NewProject} /> 
           {/* <Route path='/project/edit' exact component={ProjectEdit} /> */}
-          <Route path='/newtask' exact component={NewTask} />
+        <Route path='/newtask' exact component={NewTask} />
+        <Route path='/project/:id' exact component={Project} />
         </Switch>
     </Router>
   );

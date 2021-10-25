@@ -9,6 +9,7 @@ import { registerReducer } from './reducers/registerReducer';
 import { loginReducer } from './reducers/loginReducer';
 import { createProjectReducer, deleteProjectReducer, fetchProjectsReducer, getSingleProjectReducer, updateProjectReducer } from './reducers/projectReducer';
 import { getAllUsersReducer, getOneUserReducer } from './reducers/users';
+import { createTaskReducer, getTaskReducer } from './reducers/task';
 
 
 export default function configureStore() {
@@ -16,6 +17,8 @@ export default function configureStore() {
 
     const store = createStore(
         combineReducers({
+            taskcreate: createTaskReducer,
+            tasks: getTaskReducer,
             reg: registerReducer,
             log: loginReducer,
             users: getAllUsersReducer,

@@ -12,7 +12,9 @@ const Topbar = () => {
           {/* <span className="logo">User System</span> */}
           <span className="userName">
             Welcome{" "}
-            <stron style={{ fontWeight: "600" }}>{state.user.username}</stron>{" "}
+            <stron style={{ fontWeight: "600" }}>
+              {state.user.username} {state.user.full_name}
+            </stron>{" "}
             to user system
           </span>
         </div>

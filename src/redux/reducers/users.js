@@ -48,7 +48,7 @@ export const getOneUserReducer = (state = { user: {} }, action) => {
             return { 
                 ...state,
                 loading: false,
-                user: {},
+                // user: {},
                 error: action.error
              };
         default:

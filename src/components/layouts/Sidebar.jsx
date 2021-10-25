@@ -32,6 +32,11 @@ const Sidebar = () => {
                     All Projects
                   </Link>
                 </li>
+                {/* <li>
+                  <Link to="/project" className="link">
+                    Project
+                  </Link>
+                </li> */}
               </Collapsible>
             </li>
             <li className="sidebarListItem" active>

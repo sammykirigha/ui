@@ -22,9 +22,8 @@ export const getUsersService = async () => {
   return data;
 };
 
-export const getUserService = async (id) => {
-  const USER_END_POINT = `http://localhost:5001/api/v2/users/${id}`;
+export const getUserService = async (userId) => {
+  const USER_END_POINT = `http://localhost:5001/api/v2/users/${userId}`;
   const { data } = await axios.get(USER_END_POINT);
-  console.log("single user", { data });
   return data;
 };

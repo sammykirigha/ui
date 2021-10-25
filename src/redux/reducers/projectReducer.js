@@ -72,9 +72,7 @@ export const fetchProjectsReducer = (state = { projects: []}, action) => {
 };
 
 //update the project
-const initialState = {
-    projects: []
-}
+
 export const updateProjectReducer = (state = { message: '' }, action) => {
     switch (action.type) {
         case UPDATE_PROJECT_LOAD:

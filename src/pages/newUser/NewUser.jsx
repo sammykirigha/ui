@@ -90,7 +90,7 @@ const NewUser = () => {
             style={{ width: "100px", height: "50px" }}
           >
             <label htmlFor="">Age</label>
-            <input type="number" placeholder="age" name="age" />
+            <input type="text" placeholder="age" name="age" />
           </div>
           <div className="newUserItem" style={{ width: "200px" }}>
             <label>IsAdmin</label>

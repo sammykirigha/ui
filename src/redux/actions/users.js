@@ -1,4 +1,4 @@
-import { LOAD_ONE_USER, LOAD_USERS, LOAD_USERS_FAILED, LOAD_USERS_SUCCESS } from "../types/types";
+import { LOAD_ONE_USER, LOAD_ONE_USER_FAILED, LOAD_ONE_USER_SUCCESS, LOAD_USERS, LOAD_USERS_FAILED, LOAD_USERS_SUCCESS } from "../types/types";
 
 export const loadAllUsers = () => {
     return ({
@@ -22,10 +22,10 @@ export const getAllUsersFailed = (error) => {
 
 //GET ONE USER
 
-export const loadOneUser = (id) => {
+export const loadOneUser = (userId) => {
     return ({
         type: LOAD_ONE_USER,
-        id
+        userId
     });
 };
 

@@ -1,16 +1,10 @@
 // import { Popover } from 'bootstrap';
-import React, { useState } from "react";
+import React from "react";
 import moment from "moment";
 import { Link, useParams } from "react-router-dom";
-import Wrapper from "../../components/layouts/Wrapper";
-import ConfirmDelete from "./ConfirmDelete";
+import { useSelector } from "react-redux";
 
-const SingleProjectCard = ({ project, page }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  //   const dispatch = useDispatch();
-  //   const id = useParams();
-
+const SingleProjectCard = ({ project, page, team_lead_name }) => {
   //formate date
   let date = new Date(project.start_date);
   const dateString = moment(date).format("YYYY-MM-DD");
@@ -62,50 +56,25 @@ const SingleProjectCard = ({ project, page }) => {
         }}
       >
         <span>
-          <strong>Team Lead:</strong> {project.team_lead}
+          <strong>Team Lead:</strong> {team_lead_name.username}{" "}
+          {team_lead_name.full_name}
         </span>
         <span>
           {" "}
           <strong>Initial Activity:</strong> {project.initial_activity}
         </span>
       </div>
-      <div className="description" style={{ padding: "10px", color: "black" }}>
-        <h6>Project Description</h6>
-        <p>{project.description} </p>
-      </div>
-      <div className="extra content">
-        <div className="ui three buttons">
-          <button className="ui green basic button">
-            <Link
-              to="/newtask"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Add Task
-            </Link>
-          </button>
-          <button className="ui teal basic button">
-            <Link
-              to={`/projects/edit`}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Edit
-            </Link>
-          </button>
-          <button
-            className="ui red basic button"
-            onClick={() => {
-              setModalOpen(true);
-            }}
-          >
-            Delete
-          </button>
-          {modalOpen && (
-            <ConfirmDelete
-              setOpenModal={setModalOpen}
-              //   onClick={dispatch(deleteProjectLoad(id))}
-            />
-          )}
-        </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "10px",
+        }}
+      >
+        <button className="ui teal basic button">
+          {" "}
+          <Link to={`/project/${project.id}`}>see more deteils</Link>{" "}
+        </button>
       </div>
     </div>
   );

@@ -15,12 +15,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadOneUser } from "../../redux/actions/users";
 
 const User = () => {
-  const id = useParams();
+  const { userId } = useParams();
   const dispatch = useDispatch();
-  const { state } = useSelector((state) => state.user);
+  const state = useSelector((state) => state.user);
+  console.log("my state", state);
 
+  console.log(userId);
   useEffect(() => {
-    dispatch(loadOneUser(id));
+    dispatch(loadOneUser(userId));
   }, []);
   return (
     <Wrapper>
@@ -40,19 +42,25 @@ const User = () => {
                 className="userShowImg"
               />
               <div className="userShowTopTitle">
-                <span className="userShowUsername">Samuel Kirigha</span>
-                <span className="userShowUserTitle">System Admin</span>
+                <span className="userShowUsername">
+                  {state.user.username} {state.user.full_name}
+                </span>
+                <span className="userShowUserTitle">
+                  System {state?.user?.isAdmin === 1 ? "Admin" : "User"}
+                </span>
               </div>
             </div>
             <div className="userShowBottom">
               <span className="userShowTitle">Account Details</span>
               <div className="userShowInfo">
                 <PermIdentity className="userShowIcon" />
-                <span className="userShowInfoTitle">sammy1234</span>
+                <span className="userShowInfoTitle">
+                  {state.user.username}1234
+                </span>
               </div>
               <div className="userShowInfo">
                 <CalendarToday className="userShowIcon" />
-                <span className="userShowInfoTitle">10.12.1999</span>
+                <span className="userShowInfoTitle">{Date.now()}</span>
               </div>
               <span className="userShowTitle">Contact Details</span>
               <div className="userShowInfo">
@@ -61,9 +69,7 @@ const User = () => {
               </div>
               <div className="userShowInfo">
                 <MailOutline className="userShowIcon" />
-                <span className="userShowInfoTitle">
-                  sammykirigha@gmail.com
-                </span>
+                <span className="userShowInfoTitle">{state.user.email}</span>
               </div>
               <div className="userShowInfo">
                 <LocationSearching className="userShowIcon" />
@@ -81,6 +87,7 @@ const User = () => {
                     type="text"
                     placeholder="sammy"
                     name="username"
+                    value={state.user.username}
                     className="userUpdateInput"
                   />
                 </div>
@@ -90,6 +97,7 @@ const User = () => {
                     type="text"
                     placeholder="sammy kirigha"
                     name="full name"
+                    value={state.user.full_name}
                     className="userUpdateInput"
                   />
                 </div>
@@ -99,6 +107,7 @@ const User = () => {
                     type="text"
                     placeholder="sammy@gmail.com"
                     name="email"
+                    value={state.user.email}
                     className="userUpdateInput"
                   />
                 </div>
@@ -108,6 +117,7 @@ const User = () => {
                     type="text"
                     placeholder="Admin"
                     name="email"
+                    value={state.user.isAdmin === 1 ? "Admin" : "User"}
                     className="userUpdateInput"
                   />
                 </div>

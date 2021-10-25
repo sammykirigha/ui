@@ -1,30 +1,29 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const projectCreateService = async (project) => {
   const CREATE_PROJECT_API_ENDPOINT =
-    'http://localhost:5000/api/v2/projects/create';
+    "http://localhost:5000/api/v2/projects/create";
   const { data } = await axios.post(CREATE_PROJECT_API_ENDPOINT, project);
   return data;
 };
 
-export const getAllProjectsService = async () => {
-  const GET_PROJECTS_ENDPOINT = 'http://localhost:5000/api/v2/projects/';
+export const getAllProjectsService = async (uid) => {
+  const GET_PROJECTS_ENDPOINT = `http://localhost:5000/api/v2/projects/${uid}`;
   const { data } = await axios.get(GET_PROJECTS_ENDPOINT);
+  console.log("all projects", data);
   return data;
 };
 
 export const getSingleProjectService = async (id) => {
-  const GET_ONE_PROJECT_ENDPOINT = `http://localhost:5000/api/v2/projects/${id}`;
+  const GET_ONE_PROJECT_ENDPOINT = `http://localhost:5000/api/v2/projects/project/${id}`;
   const { data } = await axios.get(GET_ONE_PROJECT_ENDPOINT);
-  console.log('######', data);
+  console.log("one project", data);
   return data;
 };
 
 export const updateProjectService = async (id, project) => {
   const UPDATE_PROJECT_ENDPOINT = `http://localhost:5000/api/v2/projects/${id}`;
-  console.log('<<<<<<<<<<<<<>>>>>>>>>> service', { project });
   const { data } = await axios.put(UPDATE_PROJECT_ENDPOINT, project);
-  console.log(data);
   return data;
 };
 
