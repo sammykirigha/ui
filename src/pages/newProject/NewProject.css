@@ -3,12 +3,25 @@
     margin-left: 15px;
 }
 
+.formBody {
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+}
+
+.right {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
 .addProjectForm {
-    margin-top: 10px;
+    margin-top: 4px;
+    margin-bottom: 5px;
 }
 
 .addProjectItem {
     width: 250px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -16,11 +29,19 @@
 
 .addProjectItem > label {
     color: gray;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.option {
+    color: gray;
 }
 
 .addProjectItem > input {
+    padding: 10px;
+}
+
+.addProjectItem > select {
     padding: 10px;
 }
 
@@ -29,7 +50,7 @@
     padding: 7px 10px;
     border: none;
     border-radius: 10px;
-    background-color: darkblue;
+    background-color: rgb(0, 119, 182);
     color: white;
     font-weight: 600;
     cursor: pointer;

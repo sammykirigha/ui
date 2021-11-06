@@ -57,7 +57,7 @@ const LoginForm = () => {
       <div className="ui grid">
         <div className="five wide column" />
         <div className="six wide column formBackground">
-          <h1>Login Page</h1>
+          <h1>Welcome Back</h1>
           <Form onSubmit={onLoginSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>

@@ -33,10 +33,6 @@ const ProjectList = () => {
   }, []);
 
   useEffect(() => {
-    if (!user?.id) history.push("/");
-  }, [user]);
-
-  useEffect(() => {
     dispatch(getProjects(user.id));
   }, [dispatch]);
 
@@ -52,7 +48,7 @@ const ProjectList = () => {
   return (
     <Wrapper>
       <div>
-        {/* <SearchComponent /> */}
+        <SearchComponent />
         {projects.length === 0 ? (
           <div style={{ margin: "10%", fontSize: "16px" }}>
             <div

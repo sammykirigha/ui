@@ -7,7 +7,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createTask } from "../../redux/actions/task";
 
-const TaskModal = ({ id, show, handleClose, user, handleShow }) => {
+const TaskModal = ({ id, show, handleClose, users, handleShow }) => {
   const dispatch = useDispatch();
   const [task, setTask] = useState({
     task_name: "",
@@ -115,9 +115,11 @@ const TaskModal = ({ id, show, handleClose, user, handleShow }) => {
                 <lable> User </lable>
                 <select value={task.user_id} onChange={onChange} name="user_id">
                   <option>Choose user to undertake Task</option>
-                  <option value={user?.id}>
-                    {user?.username} {user?.full_name}
-                  </option>
+                  {users?.map((user) => (
+                    <option value={user?.id}>
+                      {user?.username} {user?.full_name}
+                    </option>
+                  ))}
                 </select>
               </div>
             </form>

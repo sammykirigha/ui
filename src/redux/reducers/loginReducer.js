@@ -3,6 +3,7 @@ import { LOGIN, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from '../types/types';
 export const loginReducer = (state = { user: {} }, action) => {
     switch (action.type) {
         case LOGIN:
+            
             return {
                 ...state,
                 loading: true

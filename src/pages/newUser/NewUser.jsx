@@ -14,13 +14,14 @@ const NewUser = () => {
     full_name: "",
     email: "",
     gender: "",
-    age: "",
+    age: null,
     password: "",
     isAdmin: false,
   });
 
   const formSubmit = (e) => {
     e.preventDefault();
+    console.log({ user });
     dispatch(userRegister(user));
     history.push("/userlist");
   };
@@ -44,6 +45,7 @@ const NewUser = () => {
               id="username"
               name="username"
               onChange={onInputChange}
+              value={user.username}
             />
           </div>
           <div className="newUserItem">
@@ -52,6 +54,7 @@ const NewUser = () => {
               type="text"
               placeholder="Enter full names"
               name="full_name"
+              value={user.full_name}
               id="full_name"
               onChange={onInputChange}
             />
@@ -62,6 +65,7 @@ const NewUser = () => {
               type="text"
               placeholder="Enter email"
               name="email"
+              value={user.email}
               id="email"
               onChange={onInputChange}
             />
@@ -90,14 +94,18 @@ const NewUser = () => {
             style={{ width: "100px", height: "50px" }}
           >
             <label htmlFor="">Age</label>
-            <input type="text" placeholder="age" name="age" />
+            <input
+              type="number"
+              placeholder="age"
+              name="age"
+              onChange={onInputChange}
+            />
           </div>
           <div className="newUserItem" style={{ width: "200px" }}>
             <label>IsAdmin</label>
             <input
               onChange={checkBoxChange}
               className="newUserSelect"
-              name="isAdmin"
               name="isAdmin"
               type="checkbox"
               checked={user.isAdmin}

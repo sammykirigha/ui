@@ -46,7 +46,7 @@ const SingleProjectCard = ({ project, page, team_lead_name }) => {
           </span>
         </div>
       </div>
-      <div
+      {/* <div
         className="team"
         style={{
           display: "flex",
@@ -56,14 +56,14 @@ const SingleProjectCard = ({ project, page, team_lead_name }) => {
         }}
       >
         <span>
-          <strong>Team Lead:</strong> {team_lead_name.username}{" "}
-          {team_lead_name.full_name}
+          <strong>Team Lead:</strong>
+          {team_lead_name.username} {team_lead_name.full_name}
         </span>
         <span>
           {" "}
           <strong>Initial Activity:</strong> {project.initial_activity}
         </span>
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",
@@ -73,7 +73,12 @@ const SingleProjectCard = ({ project, page, team_lead_name }) => {
       >
         <button className="ui teal basic button">
           {" "}
-          <Link to={`/project/${project.id}`}>see more deteils</Link>{" "}
+          <Link
+            to={`/project/${project.id}`}
+            style={{ textDecoration: "none" }}
+          >
+            see more details
+          </Link>{" "}
         </button>
       </div>
     </div>

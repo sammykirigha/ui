@@ -1,10 +1,19 @@
 import { Language, NotificationsNone, Settings } from "@mui/icons-material";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Collapsible from "react-collapsible";
+import { logout } from "../../redux/actions/login";
+import { useHistory } from "react-router";
 
 const Topbar = () => {
   const state = useSelector((state) => state.log);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClick = () => {
+    dispatch(logout());
+    history.push("/");
+  };
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -43,6 +52,7 @@ const Topbar = () => {
                 color: "black",
                 cursor: "pointer",
               }}
+              onClick={handleClick}
             >
               Logout
             </span>
